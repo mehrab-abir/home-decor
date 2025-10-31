@@ -6,3 +6,5 @@ A responsive React application that displays a curated collection of stylish hom
 - 🔍 Individual product detail view with dynamic route handling
 - 💖 Add/remove products from wishlist (persisted in localStorage)
 - ⚡ Lightweight, fast, and fully responsive design built with React Router & Tailwind CSS
+
+  ## Visit: https://home-decora.netlify.app/
