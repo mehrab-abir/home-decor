@@ -11,10 +11,10 @@ Users can browse products, search by name, sort by price, view detailed product 
 - ⚡ Lightweight, fast, and fully responsive design built with React Router & Tailwind CSS
 
 🛠️ Tech Stack
-	•	React
-	•	React Router
-	•	Tailwind CSS
-	•	DaisyUI
-	•	LocalStorage
+- React
+- React Router
+- Tailwind CSS
+- Daisy UI
+- LocalStorage
 
   ## Visit: https://home-decora.netlify.app/
