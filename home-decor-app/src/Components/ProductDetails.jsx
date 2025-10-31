@@ -35,20 +35,21 @@ const ProductDetails = () => {
 
   const currentProduct = products.find((product) => product.id === Number(id));
   console.log(currentProduct);
-  const { name, category, price, material, image, description } =
+  const { name, category, price, material, image, description,dimensions } =
     currentProduct || {};
   // console.log(name)
 
   return (
-    <div className="productCard py-2 px-8 shadow-lg border border-gray-300">
-      <div className="px-0">
-        <img src={image} alt="" className="h-1/2 mx-auto" />
+    <div className="productCard flex flex-col md:flex-row items-start md:items-center gap-10 shadow-lg border border-gray-300 h-auto">
+      <div className="px-0 w-full md:w-1/3">
+        <img src={image} alt="" className="w-full p-3" />
       </div>
-      <div className="mt-3 pb-4">
+      <div className="p-3">
         <h1 className="text-3xl font-bold mb-3 text-emerald-600">{name}</h1>
         <p className="text-lg mb-3">{description}</p>
         <p className="text-lg font-semibold">Material: <span className="px-2 bg-amber-600 text-white rounded-md">{material}</span></p>
         <p className="text-lg font-semibold mt-2">Category: <span className="px-2 bg-teal-700 text-white rounded-md">{category}</span></p>
+        <p className="text-lg font-semibold mt-2">Dimension: {dimensions}</p>
         <p className="text-2xl font-bold my-3 text-emerald-700">Price: ${price}</p>
         <Link to="/products">
         <p className="flex items-center gap-2 bg-black text-white px-2 w-20 rounded-lg"><FaArrowLeft /> Back</p>
