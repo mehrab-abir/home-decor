@@ -11,7 +11,10 @@ const Footer = () => {
         <p>
           HomeDecor Industries Ltd.
           <br />
-          Providing reliable tech since 1992
+          &copy;Copyright Reserved - 2025 <br />
+        </p>
+        <p className="mt-2 text-lg hover:text-teal-400 hover:underline">
+          <Link to="https://github.com/mehrab-abir" target="blank">Mehrab Jalil Abir</Link>
         </p>
         <nav className="flex gap-4">
           <Link to='https://github.com/mehrab-abir' className="text-2xl" target="blank"><FaGithub /></Link>

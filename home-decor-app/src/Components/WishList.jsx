@@ -4,7 +4,7 @@ import {
   getStoredProducts,
   removeFromWishList,
 } from "../Utilities/localStorage";
-import { ToastContainer, toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 const WishList = () => {
   const { products, loading } = useProductsData();
@@ -34,11 +34,11 @@ const WishList = () => {
 
   const handleSort = (type) => {
     if (type === "asc") {
-        setSortType("Low -> High")
+      setSortType("Low -> High");
       const sortedList = [...wishList].sort((a, b) => a.price - b.price);
       setWishList(sortedList);
     } else {
-        setSortType("High -> Low")
+      setSortType("High -> Low");
       const sortedList = [...wishList].sort((a, b) => b.price - a.price);
       setWishList(sortedList);
     }
@@ -64,7 +64,11 @@ const WishList = () => {
           Wishlist ({wishList.length})
         </h1>
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn bg-teal-600 text-white">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn bg-teal-600 text-white"
+          >
             Sort By Price: {sortType}
           </div>
           <ul
@@ -75,7 +79,8 @@ const WishList = () => {
               onClick={() => {
                 handleSort("desc");
                 document.activeElement.blur();
-              }} className="my-2 cursor-pointer text-lg text-white"
+              }}
+              className="my-2 cursor-pointer text-lg text-white"
             >
               High -&gt; Low
             </li>
@@ -83,7 +88,8 @@ const WishList = () => {
               onClick={() => {
                 handleSort("asc");
                 document.activeElement.blur();
-              }} className="my-2 cursor-pointer text-lg text-white"
+              }}
+              className="my-2 cursor-pointer text-lg text-white"
             >
               Low -&gt; High
             </li>
@@ -121,7 +127,19 @@ const WishList = () => {
           );
         })}
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        transition={Bounce}
+      />
     </div>
   );
 };
