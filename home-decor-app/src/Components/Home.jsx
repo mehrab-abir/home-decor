@@ -11,7 +11,7 @@ const Home = () => {
         return <p>Loading ....</p>
     }
 
-    console.log(products);
+    // console.log(products);
 
     const featuredProducts = products.slice(0,6);
 
