@@ -1,32 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
-import { FaShoppingCart } from "react-icons/fa";
-import { getAddedProducts } from "../Utilities/localStorage";
 
 const Navbar = () => {
-  const [cart, setCart] = useState([]);
-  const [cartLength, setCartLength] = useState(0);
-
-  // Load cart once and refresh whenever localStorage "cart" changes
-  useEffect(() => {
-    const updateCart = () => {
-      const stored = getAddedProducts() ?? [];
-      setCart(stored);
-    };
-
-    updateCart(); // initial load
-    window.addEventListener("storage", updateCart);
-    return () => window.removeEventListener("storage", updateCart);
-  }, []);
-
-  //count total items from quantities
-  useEffect(() => {
-    let totalItems = 0;
-    for (const product of cart) {
-      totalItems = totalItems + (product.quantity || 0);
-    }
-    setCartLength(totalItems);
-  }, [cart]);
 
   return (
     <div className="navbar bg-base-100 shadow-sm fixed w-full py-6 z-50">
@@ -49,6 +23,7 @@ const Navbar = () => {
                 />
               </svg>
             </div>
+            {/* in mobile devices */}
             <ul
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -62,33 +37,28 @@ const Navbar = () => {
               <NavLink to="/wishlist" className="text-lg mt-3">
                 Wishlist
               </NavLink>
+              <NavLink to='/cart' className="text-lg mt-3">Cart</NavLink>
             </ul>
           </div>
-          <Link to="/" className="text-3xl font-bold text-emerald-700">
+          <Link to="/" className="text-2xl md:text-3xl font-bold text-emerald-700">
             HomeDecor
           </Link>
         </div>
 
         <div className="navbar-end">
-          <Link to="/cart" className="flex items-center justify-center w-20 bg-teal-500 rounded-md mr-1">
-            <FaShoppingCart className="text-3xl text-white" />
-            <span className="text-3xl text-white font-semibold ml-2">
-              {cartLength}
-            </span>
-          </Link>
-
           <ul className="menu menu-horizontal hidden lg:flex">
-            <NavLink to="/" className="text-lg ml-6">
+            <NavLink to="/" className="text-lg ml-6 hover-link transition-all duration-300">
               Home
             </NavLink>
-            <NavLink to="/products" className="text-lg ml-6">
+            <NavLink to="/products" className="text-lg ml-6 hover-link transition-all duration-300">
               Products
             </NavLink>
-            <NavLink to="/wishlist" className="text-lg ml-6">
+            <NavLink to="/wishlist" className="text-lg ml-6 hover-link transition-all duration-300">
               Wishlist
             </NavLink>
+            <NavLink to='/cart' className="text-lg ml-6 mr-3 hover-link transition-all duration-300">Cart</NavLink>
           </ul>
-          <a className="btn bg-teal-700 text-white">Login</a>
+          <a className="bg-teal-700 text-white p-1 rounded-sm">Login</a>
         </div>
       </div>
     </div>
