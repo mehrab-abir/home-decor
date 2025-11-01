@@ -6,7 +6,6 @@ import { addToCart, getAddedProducts } from "../Utilities/localStorage";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Root = () => {
-  const [cartProducts, setCartProducts] = useState([]);
 
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
@@ -34,13 +33,9 @@ const Root = () => {
 
   const handleAddToCart = (id, price) => {
     addToCart(id, price);
-
     const currentProducts = getAddedProducts();
-    const updatedCart = [...currentProducts];
-    // console.log(updatedCart)
-    setCartProducts(updatedCart);
+    setCart(currentProducts);
   };
-  // console.log(cartProducts)
 
   return (
     <div>
