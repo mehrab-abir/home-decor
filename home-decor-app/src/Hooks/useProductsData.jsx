@@ -10,7 +10,7 @@ const useProductsData = () => {
         axios('/furnitureData.json')
         .then(data => setProducts(data.data))
         .catch(err => console.log(err))
-        .finally(setLoading(false))
+        .finally(() => setLoading(false));
     },[])
 
     return {products,loading};

@@ -4,26 +4,16 @@ import { FaShoppingCart } from "react-icons/fa";
 import { getAddedProducts } from "../Utilities/localStorage";
 
 const Navbar = () => {
-  const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
 
-  // Load cart once and refresh whenever localStorage "cart" changes
-  useEffect(() => {
-    const updateCart = () => {
-      const stored = getAddedProducts() ?? [];
-      setCart(stored);
-    };
+  const cart = getAddedProducts();
+  // console.log(cart);
 
-    updateCart(); // initial load
-    window.addEventListener("storage", updateCart);
-    return () => window.removeEventListener("storage", updateCart);
-  }, []);
-
-  //count total items from quantities
   useEffect(() => {
+    
     let totalItems = 0;
     for (const product of cart) {
-      totalItems = totalItems + (product.quantity || 0);
+      totalItems = totalItems + product.quantity;
     }
     setCartLength(totalItems);
   }, [cart]);
@@ -41,12 +31,13 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
+                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />
+                />{" "}
               </svg>
             </div>
             <ul
@@ -68,11 +59,10 @@ const Navbar = () => {
             HomeDecor
           </Link>
         </div>
-
         <div className="navbar-end">
-          <Link to="/cart" className="flex items-center justify-center w-20 bg-teal-500 rounded-md mr-1">
-            <FaShoppingCart className="text-3xl text-white" />
-            <span className="text-3xl text-white font-semibold ml-2">
+          <Link to="/cart" className="flex">
+            <FaShoppingCart className="text-4xl text-teal-600" />
+            <span className="text-2xl text-black font-semibold absolute ml-5 -mt-3">
               {cartLength}
             </span>
           </Link>

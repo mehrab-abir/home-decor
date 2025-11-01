@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useOutletContext } from "react-router";
 import { addToWishList } from "../Utilities/localStorage";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 
 const SingleProduct = ({ product, enableHover = true }) => {
   const { name, category, price, image, id } = product;
+  const {handleAddToCart} = useOutletContext();
 
   const handleAddToWishList = (id) => {
     addToWishList(id);
@@ -26,18 +27,19 @@ const SingleProduct = ({ product, enableHover = true }) => {
         <p>{category}</p>
       </div>
 
-      <div className="mb-3 flex gap-3">
+      <div className="mb-3 flex justify-between">
         <Link
           to={`/products/details/${id}`}
           className="bg-teal-700 py-2 px-3 text-white font-semibold rounded-lg cursor-pointer hover:bg-teal-600"
         >
           Details
         </Link>
+        <button className="bg-teal-700 py-2 px-3 text-white font-semibold rounded-lg cursor-pointer hover:bg-teal-600" onClick={()=>handleAddToCart(id,price)}>Add to Cart</button>
         <button
           className="bg-teal-700 py-2 px-3 text-white font-semibold rounded-lg cursor-pointer hover:bg-teal-600"
           onClick={() => handleAddToWishList(id)}
         >
-          Add to wishlist
+          + Wishlist
         </button>
       </div>
       <ToastContainer

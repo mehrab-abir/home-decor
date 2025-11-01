@@ -51,7 +51,7 @@ const WishList = () => {
           -Wishlist is empty-
         </p>
         <p>
-          After you add product(s) to the wishlist, they will be displayed here
+          After you add product(s) to the wishlist, they will appear here
         </p>
       </div>
     );
