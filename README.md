@@ -5,6 +5,8 @@ Users can browse products, search by name, sort by price, view detailed product 
 ## Key Features
 - 🏠 Home and Products pages with shared product components
 - 🔍 Search Functionality – Instantly find furniture by name
+- 🛒 Cart Management – Add or remove products from the cart with quantity tracking
+- 💰 Total Price Calculation – Automatic real-time cart total updates
 - ↕️ Sort Options – Sort products by price
 - 🔍 Individual product detail view with dynamic route handling
 - 💖 Add/remove products from wishlist (persisted in localStorage)
